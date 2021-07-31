@@ -5,8 +5,14 @@ import (
 	"net/http"
 )
 
-func main() {
-	handler := http.HandlerFunc(PlayerServer)
+type InMemoryPlayerStore struct{}
 
-	log.Fatal(http.ListenAndServe(":5000", handler))
+func (i *InMemoryPlayerStore) GetPlayerScore(name string) int {
+	return 11
+}
+
+func main() {
+
+	server := PlayerServer{&InMemoryPlayerStore{}}
+	log.Fatal(http.ListenAndServe(":5000", &server))
 }
