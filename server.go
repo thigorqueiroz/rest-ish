@@ -38,15 +38,3 @@ func (p *PlayerServer) showScore(w http.ResponseWriter, player string) {
 
 	fmt.Fprint(w, score)
 }
-
-func GetPlayerScore(name string) int {
-	if name == "Pepper" {
-		return 20
-	}
-
-	if name == "Floyd" {
-		return 10
-	}
-
-	return 0
-}
